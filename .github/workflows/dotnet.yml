@@ -22,7 +22,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: publish
-        path: net6/publish
+        path: ./publish
     - name: Download dotnet artifacts
       uses: actions/download-artifact@v3
       with:
