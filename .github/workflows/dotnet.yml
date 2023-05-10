@@ -19,7 +19,9 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --configuration Release --no-restore
-    - name: Replace connection strings checkAPI
+    - name: Connections
+      run: echo ${{env.dev}} replace to ${{env.prod}}
+    - name: Replace connection string 
       run: sed -i 's|${{env.dev}}|${{env.prod}}|g' ESP/appsettings.json
     - name: Publish
       run : dotnet publish -c Release --no-build --output ./publish/ESP ./ESP/ESP.csproj
