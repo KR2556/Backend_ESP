@@ -3,8 +3,8 @@ on:
   push:
     branches: [ "main" ]
 env:
- dev: Server=(localdb)\\mssqllocaldb;Database=applicationdb;Trusted_Connection=True;
- prod: ${{secrets.CONNECTION}}
+ dev: "Server=(localdb)\\mssqllocaldb;Database=applicationdb;Trusted_Connection=True;"
+ prod: ${{ secrets.CONNECTION }}
 jobs:
   build:
     runs-on: ubuntu-latest 
