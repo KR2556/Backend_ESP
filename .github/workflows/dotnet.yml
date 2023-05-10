@@ -1,0 +1,30 @@
+name: .NET Build App
+on:
+  push:
+    branches: [ "main" ]
+jobs:
+  build:
+    runs-on: ubuntu-latest 
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Install .NET version 6.0
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.0.x
+    - name: Install dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+    - name: Publish
+      run : dotnet publish --configuration Release
+    - name: Upload dotnet artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: bin/Release/net6.0/publish/
+        path: publish-files
+    - name: Download dotnet artifacts
+      uses: actions/download-artifact@v3
+      with:
+        path: publish-files
+      
