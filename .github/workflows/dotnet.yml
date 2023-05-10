@@ -2,6 +2,9 @@ name: .NET Build App
 on:
   push:
     branches: [ "main" ]
+env:
+ dev: Server=(localdb)\\mssqllocaldb;Database=applicationdb;Trusted_Connection=True;
+ prod: ${{secrets.CONNECTION}}
 jobs:
   build:
     runs-on: ubuntu-latest 
@@ -17,7 +20,7 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
     - name: Replace connection strings checkAPI
-      run: sed -i 's|Server=(localdb)\\mssqllocaldb;Database=applicationdb;Trusted_Connection=True;|${{ secrets.CONNECTION }}|g' src/api/checkAPI.js
+      run: sed -i 's|${{env.dev}}|${{env.prod}}|g' ESP/appsettings.json
     - name: Publish
       run : dotnet publish -c Release --no-build --output ./publish/ESP ./ESP/ESP.csproj
     - name: Upload dotnet artifacts
