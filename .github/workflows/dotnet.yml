@@ -20,7 +20,7 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
     - name: Replace connection string 
-      run: sed -i 's|${{ env.dev }}| ${{ env.prod }}"|g' ESP/appsettings.json
+      run: sed -i 's|${{ env.dev }}| ${{env.prod}}"|g' ESP/appsettings.json
     - name: Publish
       run : dotnet publish -c Release --no-build --output ./publish/ESP ./ESP/ESP.csproj
     - name: Upload dotnet artifacts
