@@ -17,11 +17,11 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
     - name: Publish
-      run : dotnet publish --configuration Release
+      run : dotnet publish -c Release -o /publish
     - name: Upload dotnet artifacts
       uses: actions/upload-artifact@v3
       with:
-        name: bin/Release/net6.0/publish/
+        name: publish
         path: publish-files
     - name: Download dotnet artifacts
       uses: actions/download-artifact@v3
