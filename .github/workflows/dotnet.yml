@@ -3,7 +3,7 @@ on:
   push:
     branches: [ "main" ]
 env:
- dev: "Server=(localdb)\\mssqllocaldb;Database=applicationdb;Trusted_Connection=True;"
+ dev: "Server=(localdb)\\\\mssqllocaldb;Database=applicationdb;Trusted_Connection=True;"
  prod: ${{ secrets.CONNECTION }}
 jobs:
   build:
