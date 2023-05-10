@@ -22,7 +22,7 @@ jobs:
     - name: Connections
       run: echo "${{env.dev}} replace to ${{env.prod}}"
     - name: Replace connection string 
-      run: sed -i 's|${{env.dev}}|as;lfkaf;kasf|g' ESP/appsettings.json
+      run: sed -i 's|${{env.dev}}|as;lfkaf;kasf|g' appsettings.json
     - name: Publish
       run : dotnet publish -c Release --no-build --output ./publish/ESP ./ESP/ESP.csproj
     - name: Upload dotnet artifacts
