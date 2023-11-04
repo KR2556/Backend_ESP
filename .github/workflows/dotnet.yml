@@ -23,9 +23,6 @@ jobs:
       run: sed -i 's|${{ env.dev }}|${{ env.prod }}|g' ESP/appsettings.json
     - name: Publish
       run : dotnet publish -c Release --no-build --output ./publish/ESP ./ESP/ESP.csproj
-    - name: Removeng appsetting
-      run: |
-        rm -rf appsettings.json
     - name: Upload dotnet artifacts
       uses: actions/upload-artifact@v3
       with:
