@@ -33,7 +33,7 @@ jobs:
         name: publish
         path: ./publish
     - name: test
-      run : rm -rf publish/ESP/web.config
+      run : rm -rf ./publish/ESP/web.config
     - name: Download dotnet artifacts
       uses: actions/download-artifact@v3
       with:
