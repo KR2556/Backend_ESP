@@ -21,11 +21,6 @@ jobs:
       run: dotnet build --configuration Release --no-restore
     - name: Replace connection string 
       run: sed -i 's|${{ env.dev }}|${{ env.prod }}|g' ESP/appsettings.json
-    - name: Removing Files
-      run : |
-        rm -rf ESP/appsettings.Development.json
-        rm -rf ESP/appsettings.json
-        rm -rf ESP/web.config
     - name: Publish
       run : dotnet publish -c Release --no-build --output ./publish/ESP ./ESP/ESP.csproj
     - name: Upload dotnet artifacts
@@ -33,6 +28,11 @@ jobs:
       with:
         name: publish
         path: ./publish
+    - name: Removing Files
+      run : |
+        rm -rf ESP/appsettings.Development.json
+        rm -rf ESP/appsettings.json
+        rm -rf ESP/web.config
     - name: Download dotnet artifacts
       uses: actions/download-artifact@v3
       with:
