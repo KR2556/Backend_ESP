@@ -22,7 +22,8 @@ jobs:
     - name: Replace connection string 
       run: sed -i 's|${{ env.dev }}|${{ env.prod }}|g' ESP/appsettings.json
     - name: Removing Files
-      run : rm -rf ESP/appsettings.Development.json |
+      run : rm -rf | 
+        ESP/appsettings.Development.json
         ESP/appsettings.json
         ESP/web.config
     - name: Publish
