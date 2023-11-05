@@ -26,14 +26,12 @@ jobs:
     - name: Publish
       run : dotnet publish -c Release --no-build --output ./publish/ESP ./ESP/ESP.csproj
     - name: test
-      run : rm -rf web.config
+      run : rm -rf ./publish/ESP/web.config
     - name: Upload dotnet artifacts
       uses: actions/upload-artifact@v3
       with:
         name: publish
         path: ./publish
-    - name: test
-      run : rm -rf ./publish/ESP/web.config
     - name: Download dotnet artifacts
       uses: actions/download-artifact@v3
       with:
