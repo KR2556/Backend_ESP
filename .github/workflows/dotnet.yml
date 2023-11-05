@@ -25,7 +25,7 @@ jobs:
       run : rm -rf ESP/appsettings*.json
     - name: Publish
       run : dotnet publish -c Release --no-build --output ./publish/ESP ./ESP/ESP.csproj
-    - name: Remove web config
+    - name: Removing web config
       run : rm -rf publish/ESP/web.config
     - name: Upload dotnet artifacts
       uses: actions/upload-artifact@v3
